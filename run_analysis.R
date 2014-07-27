@@ -14,10 +14,10 @@ features[,2] = gsub('-std', 'Std', features[,2])
 features[,2] = gsub('[-()]', '', features[,2])
 
 allData = rbind(training, testing)
-colsWeWant <- grep(".*Mean.*|.*Std.*", features[,2])
-features <- features[colsWeWant,]
-colsWeWant <- c(colsWeWant, 562, 563)
-allData <- allData[,colsWeWant]
+meanStdFeatures <- grep(".*Mean.*|.*Std.*", features[,2])
+features <- features[meanStdFeatures,]
+meanStdFeatures <- c(meanStdFeatures, 562, 563)
+allData <- allData[,meanStdFeatures]
 colnames(allData) <- c(features$V2, "Activity", "Subject")
 colnames(allData) <- tolower(colnames(allData))
 
